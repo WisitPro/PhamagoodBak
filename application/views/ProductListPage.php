@@ -11,7 +11,7 @@ foreach ($tbl_product as $row) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pharma Good | เจ้าของกิจการ | รายการยาและเวชภัณฑ์</title>
+    <title>Pharma Good</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -22,26 +22,9 @@ foreach ($tbl_product as $row) {
 </head>
 
 <body>
-    <nav>
-        <img id="logo" src="<?php echo base_url(); ?>images/Logo.png">
-        <div id="menu">
-            <a id="btHome" href="AdminHomePage">หน้าหลัก</a>
-            <div class="dropdown">
-                <button class="dropbtn">เมนู <i class="fa-solid fa-caret-down"></i></button>
-                <div class="dropdown-content">
-                    <a  href="AdminListPage">ข้อมูลผู้ใช้งาน</a>
-                    <a  href="ProductListPage">รายการสินค้า</a>
-                    <a  href="">ข้อมูลร้องขอคำปรึกษา</a>
-                    <a  href="">ข้อมูลการชำระเงิน</a>
-                </div>
-            </div>
-            <a id="bt4" onclick="AmOut()" style="cursor:pointer">ออกจากระบบ <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
-            <!-- <a id="btLogin" href="AddminLogin">เข้าสู่ระบบ</a> -->
-            <!-- <a id="btRegister" href="Register">สมัครสมาชิก</a> -->
-        </div>
-
-    </nav>
-    <p style="font-size:20px; margin-left:190px; color:white">สำหรับเจ้าของกิจการ</p>
+    <br><br><br>
+   
+     
 
 
     <form action="Product_Add" method="POST">
@@ -49,10 +32,10 @@ foreach ($tbl_product as $row) {
         <!-- <input type="text" name="pro_id"  style="visibility:hidden ;position:absolute" value="<?php echo $row->pro_id + 1 ?>"> -->
 
 
-        <input type="text" class="head pro_id" name="pro_id" placeholder="รหัสสินค้า*" maxlength="13" onkeypress='validate(event)'>
-        <input type="text" class="head pro_name" name="pro_name" placeholder="ชื่อสินค้า*">
-        <select name="pro_type" class="head ">
-            <option disabled selected hidden style="color:#FF5353;">ประเภทยารักษา</option>
+        <input type="text" class="head pro_id" name="pro_id" placeholder="รหัสสินค้า*" maxlength="13" onkeypress='validate(event)' required>
+        <input type="text" class="head pro_name" name="pro_name" placeholder="ชื่อสินค้า*" required>
+        <select name="pro_type" class="head " required>
+            <option disabled selected hidden style="color:#FF5353;" >ประเภทยารักษา</option>
             <option>ยาลดกรด แก้ท้องอืด</option>
             <option>ยาบรรเทาอาการท้องเสีย</option>
             <option>ยาระบายแก้ท้องผูก</option>
@@ -72,11 +55,11 @@ foreach ($tbl_product as $row) {
 
 
 
-        <input type="text" class="head pro_price" name="pro_price" placeholder="ราคา*" onkeypress='validate(event)'>
+        <input type="text" class="head pro_price" name="pro_price" placeholder="ราคา*" onkeypress='validate(event)' required>
 
 
         <br><br>
-        <p id="img">ลิ้งค์รูปภาพ: <input type="text" class=" pro_img" name="pro_img">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <p id="img">ลิ้งค์รูปภาพ: <input type="text" class=" pro_img" name="pro_img" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
             <input type="radio" name="pro_kind" value="ยาทั่วไป" checked> ยาทั่วไป &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -142,7 +125,7 @@ foreach ($tbl_product as $row) {
                             <td class="data dt"><?php echo $row->pro_kind; ?></td>
                             <td id="btnTable">
                                 <a id="Edit" href='Product_Edit?pro_id=<?php echo $row->pro_id; ?>'>แก้ไข</a>
-                                <a id="Remove" href='Product_Remove?pro_id=<?php echo $row->pro_id; ?>'>ลบ</a>
+                                <a id="Remove" onclick="return confirm('คุณต้องการลบข้อมูลนี้หรือไม่');" href='Product_Remove?pro_id=<?php echo $row->pro_id; ?>'>ลบ</a>
 
                             </td>
                         </tr></tbody>

@@ -34,9 +34,11 @@ class Products extends CI_Controller{
         $this->cart->insert($data);
 
         
-        redirect('Products/Store');
+        // redirect('Products/Store');
+        redirect('Cart/');
            
         
     }
+    
     
 }
